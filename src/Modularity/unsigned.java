@@ -26,8 +26,8 @@ public class unsigned {
 			// System.out.print(p1);
 			// System.out.print(p2);
 
-			mMatrix[p1][p2] = 1;
-			mMatrix[p2][p1] = 1;
+			mMatrix[p1][p2] = edges[i][2];
+			mMatrix[p2][p1] = edges[i][2];
 		}
 	}
 
