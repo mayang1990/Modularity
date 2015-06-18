@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class readFile {
-
 	public int[][] readLine(String path) {
 
 		BufferedReader br = null;
@@ -20,24 +19,32 @@ public class readFile {
 
 			br = new BufferedReader(new FileReader(path));
 
+			// 去除首尾多余空格
 			line = br.readLine();
 			String[] eline = line.split(" ");
-			cows = Integer.parseInt(eline[0]);
-			cols = Integer.parseInt(eline[1]);
 
-			System.out.printf("%d", cows);
-			System.out.printf("%d", cols);
+			// 处理第一行的数据
+			// 处理第一行第一个数据，为定点数，生成顶点数组
+			int vexnum = Integer.parseInt(eline[0]);
+			Modularity.vex = new int[vexnum];
+			for (int i = 0; i < vexnum; i++) {
+				Modularity.vex[i] = i;
+			}
+
+			// 处理第一行剩下的两个数据
+			cows = Integer.parseInt(eline[1]);
+			cols = Integer.parseInt(eline[2]);
 			array = new int[cows][cols];
 
+			// 处理第一行之后的数据
 			while ((line = br.readLine()) != null) {
-				eline = line.split(" ");
 
+				eline = line.split(" ");
 				array[count][0] = Integer.parseInt(eline[0]);
 				array[count][1] = Integer.parseInt(eline[1]);
 				array[count][2] = Integer.parseInt(eline[2]);
 				count++;
 			}
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
